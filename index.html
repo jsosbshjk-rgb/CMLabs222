@@ -554,16 +554,24 @@ const changeQty=(btn,delta)=>{let el=btn.parentNode.querySelector('.quantity-dis
 const addToCart=(btn)=>{let p=btn.closest('.product'),qty=+p.querySelector('.quantity-display').textContent||0;if(qty<1)return;let name=p.querySelector('h3').textContent.trim(),price=+p.querySelector('.price').textContent.replace(/\D/g,'')||0;let ex=cart.find(i=>i.name===name);ex?ex.quantity+=qty:cart.push({name,price,quantity:qty});p.querySelector('.quantity-display').textContent=0;updateCart();saveCart()};
 const updateCart=()=>{let q=cart.reduce((a,i)=>a+i.quantity,0),sum=cart.reduce((a,i)=>a+i.price*i.quantity,0);$('#cart-count').textContent=q;$('#cart-total').textContent='₴ '+sum.toLocaleString('uk-UA');let bar=$('#cart-bar');bar.style.display=q?'flex':'none';$('#clear-cart-btn').style.display=q?'inline-block':'none'};
 const clearCart=()=>{if(confirm('Очистити кошик?')){cart=[];updateCart();saveCart()}};
-const orderCart=()=>{
-  if(!cart.length)return;
-  let msg='Хочу замовити:\n\n';
-  cart.forEach(i=>msg+=`• ${i.name} × ${i.quantity} шт — ₴ ${i.price*i.quantity}\n`);
-  msg+=`\nЗагальна сума: ₴ ${cart.reduce((a,i)=>a+i.price*i.quantity,0)}`;
-  const enc=encodeURIComponent(msg);
-  location.href=`viber://chat?number=%2B380681043408&text=${enc}`;
-  setTimeout(()=>{
-    if(document.visibilityState==='visible') alert(`Не вдалося відкрити Viber.\n\nСкопіюйте:\n\n${msg}`);
-  },2000);
+const orderCart = () => {
+  if (!cart.length) return;
+
+  let msg = 'Хочу замовити:\n\n';
+  cart.forEach(i => msg += `• ${i.name} × ${i.quantity} шт — ₴ ${i.price * i.quantity}\n`);
+  msg += `\nЗагальна сума: ₴ ${cart.reduce((a,i) => a + i.price * i.quantity, 0)}`;
+
+  const encoded = encodeURIComponent(msg);
+
+  // Спочатку Viber
+  location.href = `viber://chat?number=%2B380681043408&text=${encoded}`;
+
+  // Якщо не спрацювало — через 1.5 с на Telegram
+  setTimeout(() => {
+    if (document.visibilityState === 'visible') {
+      location.href = `https://t.me/CMLabsUA?text=${encoded}`;
+    }
+  }, 1500);
 };
 const toggleSubGallery=id=>$('#'+id).classList.toggle('active');
 const show=section=>{document.querySelectorAll('section').forEach(s=>s.style.display='none');$('#'+section).style.display='block';document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));event.currentTarget.classList.add('active')};
