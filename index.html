@@ -596,22 +596,27 @@ const orderCart = () => {
   if (!cart.length) return;
 
   let msg = 'Хочу замовити:\n\n';
-  cart.forEach(i => {
-    msg += `• ${i.name} × ${i.quantity} шт — ₴ ${i.price * i.quantity}\n`;
-  });
-  msg += `\nЗагальна сума: ₴ ${cart.reduce((a, i) => a + i.price * i.quantity, 0)}`;
+  cart.forEach(i => msg += `• ${i.name} × ${i.quantity} шт — ₴ ${i.price * i.quantity}\n`);
+  msg += `\nЗагальна сума: ₴ ${cart.reduce((a,i)=>a + i.price * i.quantity, 0)}`;
 
   const encoded = encodeURIComponent(msg);
 
-  // Відкриваємо чат у Telegram з автоматичним текстом
+  // Спочатку Telegram — найстабільніше
   location.href = `https://t.me/CMLabsUA?text=${encoded}`;
 
-  // Якщо через 2 секунди сторінка не змінилася (Telegram не відкрився)
+  // Якщо користувач не в Telegram — пробуємо Viber
   setTimeout(() => {
     if (document.visibilityState === 'visible') {
-      alert(`Telegram не відкрився автоматично.\n\nСкопіюйте та надішліть вручну:\n\n${msg}`);
+      location.href = `viber://chat?number=%2B380681043408&draft=${encoded}`;
     }
-  }, 10000);
+  }, 1500);
+
+  // Якщо нічого не спрацювало
+  setTimeout(() => {
+    if (document.visibilityState === 'visible') {
+      alert(`Не вдалося відкрити месенджер автоматично.\n\nСкопіюйте та надішліть вручну:\n\n${msg}`);
+    }
+  }, 3000);
 };
 
 const toggleSubGallery = id => $('#' + id).classList.toggle('active');
@@ -630,4 +635,5 @@ if (innerWidth <= 768) {
 addEventListener('load', loadCart);
 </script>
 </body>
+
 
