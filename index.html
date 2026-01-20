@@ -546,36 +546,87 @@
 
     <!-- Оновлений скрипт (замінено повністю) -->
     <script>
-let cart=[];
-const $=s=>document.querySelector(s);
-const loadCart=()=>{let s=localStorage.getItem('cmlabs_cart');if(s){cart=JSON.parse(s);updateCart()}};
-const saveCart=()=>localStorage.setItem('cmlabs_cart',JSON.stringify(cart));
-const changeQty=(btn,delta)=>{let el=btn.parentNode.querySelector('.quantity-display');el.textContent=Math.max(0,(+el.textContent||0)+delta)};
-const addToCart=(btn)=>{let p=btn.closest('.product'),qty=+p.querySelector('.quantity-display').textContent||0;if(qty<1)return;let name=p.querySelector('h3').textContent.trim(),price=+p.querySelector('.price').textContent.replace(/\D/g,'')||0;let ex=cart.find(i=>i.name===name);ex?ex.quantity+=qty:cart.push({name,price,quantity:qty});p.querySelector('.quantity-display').textContent=0;updateCart();saveCart()};
-const updateCart=()=>{let q=cart.reduce((a,i)=>a+i.quantity,0),sum=cart.reduce((a,i)=>a+i.price*i.quantity,0);$('#cart-count').textContent=q;$('#cart-total').textContent='₴ '+sum.toLocaleString('uk-UA');let bar=$('#cart-bar');bar.style.display=q?'flex':'none';$('#clear-cart-btn').style.display=q?'inline-block':'none'};
-const clearCart=()=>{if(confirm('Очистити кошик?')){cart=[];updateCart();saveCart()}};
+let cart = [];
+const $ = s => document.querySelector(s);
+
+const loadCart = () => {
+  const saved = localStorage.getItem('cmlabs_cart');
+  if (saved) { cart = JSON.parse(saved); updateCart(); }
+};
+
+const saveCart = () => localStorage.setItem('cmlabs_cart', JSON.stringify(cart));
+
+const changeQty = (btn, delta) => {
+  const el = btn.parentNode.querySelector('.quantity-display');
+  el.textContent = Math.max(0, (+el.textContent || 0) + delta);
+};
+
+const addToCart = (btn) => {
+  const p = btn.closest('.product');
+  const qty = +p.querySelector('.quantity-display').textContent || 0;
+  if (qty < 1) return;
+  const name = p.querySelector('h3').textContent.trim();
+  const price = +p.querySelector('.price').textContent.replace(/\D/g, '') || 0;
+  const ex = cart.find(i => i.name === name);
+  ex ? ex.quantity += qty : cart.push({ name, price, quantity: qty });
+  p.querySelector('.quantity-display').textContent = 0;
+  updateCart();
+  saveCart();
+};
+
+const updateCart = () => {
+  const q = cart.reduce((a, i) => a + i.quantity, 0);
+  const sum = cart.reduce((a, i) => a + i.price * i.quantity, 0);
+  $('#cart-count').textContent = q;
+  $('#cart-total').textContent = '₴ ' + sum.toLocaleString('uk-UA');
+  const bar = $('#cart-bar');
+  bar.style.display = q ? 'flex' : 'none';
+  $('#clear-cart-btn').style.display = q ? 'inline-block' : 'none';
+};
+
+const clearCart = () => {
+  if (confirm('Очистити кошик?')) {
+    cart = [];
+    updateCart();
+    saveCart();
+  }
+};
+
 const orderCart = () => {
   if (!cart.length) return;
 
   let msg = 'Хочу замовити:\n\n';
-  cart.forEach(i => msg += `• ${i.name} × ${i.quantity} шт — ₴ ${i.price * i.quantity}\n`);
-  msg += `\nЗагальна сума: ₴ ${cart.reduce((a,i) => a + i.price * i.quantity, 0)}`;
+  cart.forEach(i => {
+    msg += `• ${i.name} × ${i.quantity} шт — ₴ ${i.price * i.quantity}\n`;
+  });
+  msg += `\nЗагальна сума: ₴ ${cart.reduce((a, i) => a + i.price * i.quantity, 0)}`;
 
   const encoded = encodeURIComponent(msg);
 
-  // Спочатку Viber
-  location.href = `viber://chat?number=%2B380681043408&text=${encoded}`;
+  // Відкриваємо чат у Telegram з автоматичним текстом
+  location.href = `https://t.me/CMLabsUA?text=${encoded}`;
 
-  // Якщо не спрацювало — через 1.5 с на Telegram
+  // Якщо через 2 секунди сторінка не змінилася (Telegram не відкрився)
   setTimeout(() => {
     if (document.visibilityState === 'visible') {
-      location.href = `https://t.me/CMLabsUA?text=${encoded}`;
+      alert(`Telegram не відкрився автоматично.\n\nСкопіюйте та надішліть вручну:\n\n${msg}`);
     }
-  }, 1500);
+  }, 2000);
 };
-const toggleSubGallery=id=>$('#'+id).classList.toggle('active');
-const show=section=>{document.querySelectorAll('section').forEach(s=>s.style.display='none');$('#'+section).style.display='block';document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));event.currentTarget.classList.add('active')};
-innerWidth<=768&&addEventListener('scroll',()=>$('.logo').classList.toggle('scrolled',scrollY>140));
-addEventListener('load',loadCart);
+
+const toggleSubGallery = id => $('#' + id).classList.toggle('active');
+
+const show = section => {
+  document.querySelectorAll('section').forEach(s => s.style.display = 'none');
+  $('#' + section).style.display = 'block';
+  document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+};
+
+if (innerWidth <= 768) {
+  addEventListener('scroll', () => $('.logo').classList.toggle('scrolled', scrollY > 140));
+}
+
+addEventListener('load', loadCart);
 </script>
 </body>
