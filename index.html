@@ -110,27 +110,119 @@ p, li { font-size:1.05rem; margin:0 auto 1rem; color:#ffd700; max-width:90ch; }
     gap:1.4rem; margin-top:1.5rem;
 }
 .sub-gallery.active { display:grid; }
+/* Кошик — оновлений стиль */
+/* Іконки Font Awesome (без зовнішнього підключення — тільки потрібні класи) */
+.fas {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  margin-right: 0.5rem;
+}
+
+/* Стилі для кошика з іконками */
+/* Анімація іконок */
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.15); opacity: 0.85; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.cart-icon i,
+.order-btn i,
+.clear-btn i {
+  display: inline-block;
+  transition: all 0.3s ease;
+  animation: pulse 2s infinite ease-in-out; /* постійна легка пульсація */
+}
+
+.cart-icon:hover i,
+.order-btn:hover i,
+.clear-btn:hover i {
+  animation: none; /* зупиняємо пульсацію при наведенні */
+  transform: scale(1.3) rotate(10deg); /* поворот + збільшення */
+  color: #fff; /* білий при наведенні */
+  text-shadow: 0 0 10px #ffd700;
+}
+
+/* Стилі кнопок з іконками */
+.order-btn, .clear-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.order-btn::after, .clear-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+  pointer-events: none;
+}
+
+.order-btn:active::after, .clear-btn:active::after {
+  width: 300px;
+  height: 300px;
+  opacity: 0;
+}
+
+/* решта стилів кошика (з попереднього варіанту) */
 #cart-bar {
-    position:fixed; bottom:0; left:0; right:0;
-    background:rgba(10,10,10,0.94); backdrop-filter:blur(12px);
-    border-top:1px solid #d4af37; padding:0.9rem 1rem; text-align:center;
-    z-index:999; display:none; font-size:1.15rem; font-weight:600; color:#ffd700;
-    box-shadow:0 -4px 16px rgba(0,0,0,0.6);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, #0a0a0a 0%, #111 100%);
+  backdrop-filter: blur(12px);
+  border-top: 2px solid #d4af37;
+  padding: 0.9rem 1rem;
+  text-align: center;
+  z-index: 999;
+  display: none;
+  font: 600 1.15rem;
+  color: #ffd700;
+  box-shadow: 0 -6px 20px rgba(212, 175, 55, 0.15);
+  border-radius: 16px 16px 0 0;
 }
-#cart-bar button, #clear-cart-btn {
-    background:#d4af37; color:#0a0a0a; border:none; padding:0.7rem 1.5rem;
-    margin-left:0.8rem; border-radius:30px; font-weight:bold; cursor:pointer;
-    transition:all 0.3s; min-height:44px;
-}
-#cart-bar button:hover, #clear-cart-btn:hover {
-    background:#ffd700; box-shadow:0 0 16px rgba(255,215,0,0.5);
-}
+
+#cart-bar span { color: #fff; }
+
+#cart-bar button,
 #clear-cart-btn {
-    background:#555; color:#ffd700;
+  background: linear-gradient(135deg, #d4af37, #e6c24d);
+  color: #0a0a0a;
+  border: none;
+  padding: 0.7rem 1.4rem;
+  margin-left: 0.8rem;
+  border-radius: 30px;
+  font: bold 1rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  min-height: 44px;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+  touch-action: manipulation;
 }
-#clear-cart-btn:hover { background:#777; }
-@media (min-width:769px) {
-    #cart-bar { position:sticky; top:0; bottom:auto; border-top:none; border-bottom:1px solid #d4af37; box-shadow:none; }
+
+#cart-bar button:hover,
+#clear-cart-btn:hover {
+  background: linear-gradient(135deg, #ffd700, #ffeb3b);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.5);
+}
+
+#clear-cart-btn {
+  background: linear-gradient(135deg, #444, #555);
+  color: #ffd700;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+#clear-cart-btn:hover {
+  background: linear-gradient(135deg, #666, #777);
+  color: #fff;
+}
 }
 </style>
 </head>
