@@ -259,7 +259,7 @@ p, li { font-size:1.05rem; margin:0 auto 1rem; color:#ffd700; max-width:90ch; }
                         <div class="product" data-name="Кава IMPERIAL свіжообсмажена" data-price="1000">
                             <img src="https://uploads.onecompiler.io/44as4qwkq/44as44gm7/%D0%9A%D0%B0%D0%B2%D0%B0.png" alt="IMPERIAL">
                             <h3>IMPERIAL</h3>
-                            <p>Ідеальний баланс кислинки та гіркоти за рахунок правильного співвідношення арабіки та робусти</p>
+                            <p>Ідеальний баланс кислинки та гіркоти за рахунок правильного співвідношення арабіки та робусти✅</p>
                             <div class="price">₴ 1000</div>
                             <div class="add-to-cart-area">
                                 <button class="quantity-btn" onclick="changeQty(this,-1)">−</button>
@@ -285,7 +285,7 @@ p, li { font-size:1.05rem; margin:0 auto 1rem; color:#ffd700; max-width:90ch; }
                         <div class="product" data-name="Кава DOMINION свіжообсмажена" data-price="1600">
                             <img src="https://via.placeholder.com/260x200/000000/FFD700?text=DOMINION" alt="DOMINION">
                             <h3>DOMINION</h3>
-                            <p>М’який, ніжний, з вираженою кислотністю, фруктовими нотами, легкою солодкістю та чистим, збалансованим післясмаком без сильної гіркоти - смаковий екстаз забезпечений 😋</p>
+                            <p>М’який, ніжний, з вираженою кислинкою, фруктовими нотами, легкою солодкістю та чистим, збалансованим післясмаком без сильної гіркоти - смаковий екстаз забезпечений 😋</p>
                             <div class="price">₴ 1600</div>
                             <div class="add-to-cart-area">
                                 <button class="quantity-btn" onclick="changeQty(this,-1)">−</button>
@@ -502,12 +502,25 @@ p, li { font-size:1.05rem; margin:0 auto 1rem; color:#ffd700; max-width:90ch; }
                     </div>
                     <!-- Папка Сиропи до кави -->
                     <div class="category-folder" onclick="toggleSubGallery('syrups-folder')">
-                        <img src="https://via.placeholder.com/300x200/2c1a0f/FFD700?text=Сиропи+до+кави" alt="Сиропи до кави">
+                        <img src="https://uploads.onecompiler.io/44as4qwkq/44as44gm7/Emmi-250x250.webp" alt="Сиропи до кави">
                         <h3>Сиропи до кави</h3>
                         <p>Класичні та сезонні смаки, 700 мл </p>
                         <p style="font-size:0.95rem;opacity:0.8;">Натисніть, щоб розгорнути</p>
                     </div>
                     <div id="syrups-folder" class="sub-gallery">
+                      <div class="product" data-name="Набір сиропів Coffee Set 6шт" data-price="600">
+                            <img src="https://via.placeholder.com/260x200/2c1a0f/FFD700?text=Карамель" alt="Сироп Карамель">
+                            <h3>Набір сиропів Coffee Set 6шт по 40 мл</h3>
+                            <p>Смаки набору: карамель, ваніль, горіх, амаретто, шоколад, кокос.</p>
+                            </p>Завдяки компактному формату ви можете спробувати кілька комбінацій та обрати фаворити для щоденного використання.</p>
+                            <div class="price">₴ 600</div>
+                            <div class="add-to-cart-area">
+                                <button class="quantity-btn" onclick="changeQty(this,-1)">−</button>
+                                <span class="quantity-display">0</span>
+                                <button class="quantity-btn" onclick="changeQty(this,1)">+</button>
+                            </div>
+                            <button class="product-btn" onclick="addToCart(this)">Додати в кошик</button>
+                        </div>
                         <div class="product" data-name="Сироп Ваніль (700 мл)" data-price="500">
                             <img src="https://via.placeholder.com/260x200/2c1a0f/FFD700?text=Ваніль" alt="Сироп Ваніль">
                             <h3>Сироп Ваніль (700 мл)</h3>
@@ -605,19 +618,44 @@ p, li { font-size:1.05rem; margin:0 auto 1rem; color:#ffd700; max-width:90ch; }
                             <button class="product-btn" onclick="addToCart(this)">Додати в кошик</button>
                         </div>
                     </div>
-                    <!-- Запчастини -->
-                    <div class="product" data-name="Запчастини" data-price="450">
-                        <img src="https://images.unsplash.com/photo-1587734195503-904fca47e659" alt="Запчастини">
-                        <h3>Запчастини</h3>
-                        <p>Ремкомплекти, ущільнювачі, насоси, нагрівачі, бойлери</p>
-                        <div class="price">від ₴ 450</div>
-                        <div class="add-to-cart-area">
-                            <button class="quantity-btn" onclick="changeQty(this,-1)">−</button>
-                            <span class="quantity-display">0</span>
-                            <button class="quantity-btn" onclick="changeQty(this,1)">+</button>
-                        </div>
-                        <button class="product-btn" onclick="addToCart(this)">Додати в кошик</button>
-                    </div>
+                    <!-- Запчастини — клікабельна папка -->
+<div class="category-folder product" onclick="toggleSubGallery('parts-folder')" style="cursor:pointer;">
+    <img src="https://uploads.onecompiler.io/44as4qwkq/44as44gm7/18211514484958-removebg-preview-Photoroom.png" alt="Запчастини">
+    <h3>Запчастини</h3>
+    <p>Ремкомплекти, ущільнювачі, насоси, нагрівачі, бойлери</p>
+    <p style="font-size:0.95rem;opacity:0.8;margin-top:0.8rem;">Натисніть, щоб розгорнути</p>
+</div>
+
+<div id="parts-folder" class="sub-gallery">
+    <!-- Тут товари -->
+    <div class="product">
+        <!-- приклад товару -->
+        <img src="https://uploads.onecompiler.io/44as4qwkq/44as44gm7/5974874706_originalne-kiltse-uschilnyuvacha.webp" alt="Насос">
+        <h3>Ремкомплект групи заварювання Delonghi</h3>
+        <p>Комплектація L ( ущільнення 3 шт )</p>
+        <div class="price">₴ 350</div>
+        <div class="add-to-cart-area">
+            <button class="quantity-btn" onclick="changeQty(this,-1)">−</button>
+            <span class="quantity-display">0</span>
+            <button class="quantity-btn" onclick="changeQty(this,1)">+</button>
+        </div>
+        <button class="product-btn" onclick="addToCart(this)">Додати в кошик</button>
+    </div>
+    <div class="product">
+        <!-- приклад товару -->
+        <img src="https://uploads.onecompiler.io/44as4qwkq/44as44gm7/6233382921_w400_h400_remkomplekt-l-prokladok.jpg" alt="Насос">
+        <h3>Ремкомплект групи заварювання Delonghi</h3>
+        <p>Комплектація XL ( ущільнення 11 шт )</p>
+        <div class="price">₴ 700</div>
+        <div class="add-to-cart-area">
+            <button class="quantity-btn" onclick="changeQty(this,-1)">−</button>
+            <span class="quantity-display">0</span>
+            <button class="quantity-btn" onclick="changeQty(this,1)">+</button>
+        </div>
+        <button class="product-btn" onclick="addToCart(this)">Додати в кошик</button>
+    </div>
+    <!-- інші запчастини -->
+</div>
                 </div>
                    
                 <p style="margin-top:4rem;opacity:0.6;text-align:center;">───────────────────────────────────────────────</p>
