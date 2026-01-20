@@ -611,7 +611,7 @@ const orderCart = () => {
     if (document.visibilityState === 'visible') {
       alert(`Telegram не відкрився автоматично.\n\nСкопіюйте та надішліть вручну:\n\n${msg}`);
     }
-  }, 2000);
+  }, 10000);
 };
 
 const toggleSubGallery = id => $('#' + id).classList.toggle('active');
@@ -630,3 +630,4 @@ if (innerWidth <= 768) {
 addEventListener('load', loadCart);
 </script>
 </body>
+
