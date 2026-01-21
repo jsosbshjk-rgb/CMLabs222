@@ -6,20 +6,18 @@
 <title>Асортимент CM Labs👨‍🔧</title>
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
-body {
-    background: #000 url('https://uploads.onecompiler.io/44as4qwkq/44as44gm7/1000_F_316921939_LK6G9N3Mk6Gezu0vA2S7G5YziAou0JNB.jpg') center/cover no-repeat fixed;
-    color: #d4af37;
-    font-family: 'Segoe UI', system-ui, sans-serif;
-    min-height: 100vh;
-    line-height: 1.5;
+    body {
+    background: #000 url('https://uploads.onecompiler.io/44as4qwkq/44as44gm7/1000_F_316921939_LK6G9N3Mk6Gezu0vA2S7G5YziAou0JNB%20(1).jpg') center/60% auto repeat fixed;
+    /* 60% — масштаб, auto — пропорції, repeat — повторюється по всьому екрану */
 }
 
+
 /* Затемнення фону (темніший ефект) */
-body::before {
+body:before {
     content: '';
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.85);  /* 0.65 — рівень затемнення, збільш до 0.8, якщо хочеш ще темніше */
+    background: rgba(0, 0, 0, 0.75);  /* 0.65 — рівень затемнення, збільш до 0.8, якщо хочеш ще темніше */
     z-index: -1;
     pointer-events: none;
 }
@@ -774,3 +772,4 @@ if (innerWidth <= 768) {
 addEventListener('load', loadCart);
 </script>
 </body>
+
