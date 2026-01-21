@@ -22,10 +22,27 @@ body:before {
     pointer-events: none;
 }
 .logo {
-    position:absolute;
-    top:10vh; left:50%; transform:translateX(-50%);
-    width:auto; height:22vh; max-width:80vw;
-    z-index:90; transition:all 0.5s ease; pointer-events:none;
+    position: fixed;
+    top: 1rem;               /* відступ зверху */
+    left: 50%;
+    transform: translateX(-50%);
+    height: 300px;           /* великий розмір на початку */
+    max-width: 90vw;
+    z-index: 999;
+    transition: all 0.4s ease; /* плавна анімація зменшення */
+    pointer-events: none;
+}
+
+/* Коли сторінка проскролена — логотип стає маленьким */
+.logo.scrolled {
+    height: 40px;            /* маленький розмір після скролу */
+    top: 0.5rem;
+    left: 1rem;
+    transform: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    border-radius: 8px;
+    background: rgba(0,0,0,0.4); /* легкий фон для кращого вигляду */
+    padding: 4px;
 }
 @media (max-width:768px) {
     .logo { position:fixed; top:0.8rem; left:0.8rem; height:50px; transform:none;
@@ -248,9 +265,7 @@ p, li { font-size:1.05rem; margin:0 auto 1rem; color:#ffd700; max-width:90ch; }
         <section id="home">
             <div class="container">
                 <h1>CMLabs👨‍🔧</h1>
-                <nav>
-                <h4>Кава ✅ Засоби чищення ✅ Сиропи ✅ Запчастини ✅</h4>
-                </nav>
+                <h3 style="color: #ffd700;">Кава ✅ Засоби чищення ✅ Сиропи ✅ Запчастини ✅</h3>
                 <p style="margin:4rem 0;opacity:0.9;"></p>
                 <h2>Наш асортимент</h2>
                 <div class="gallery">
@@ -772,4 +787,3 @@ if (innerWidth <= 768) {
 addEventListener('load', loadCart);
 </script>
 </body>
-
