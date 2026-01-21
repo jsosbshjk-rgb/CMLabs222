@@ -7,13 +7,21 @@
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 body {
-    background-color:#0a0a0a;
-    color:#d4af37;
-    font-family:'Segoe UI',system-ui,sans-serif;
-    min-height:100vh;
-    line-height:1.5;
-    background-image:linear-gradient(to bottom,rgba(0,0,0,0.4)0%,rgba(0,0,0,0.85)60%);
-    background-attachment:fixed;
+    background: #000 url('https://uploads.onecompiler.io/44as4qwkq/44as44gm7/1000_F_316921939_LK6G9N3Mk6Gezu0vA2S7G5YziAou0JNB.jpg') center/cover no-repeat fixed;
+    color: #d4af37;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+/* Затемнення фону (темніший ефект) */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);  /* 0.65 — рівень затемнення, збільш до 0.8, якщо хочеш ще темніше */
+    z-index: -1;
+    pointer-events: none;
 }
 .logo {
     position:absolute;
@@ -242,9 +250,10 @@ p, li { font-size:1.05rem; margin:0 auto 1rem; color:#ffd700; max-width:90ch; }
         <section id="home">
             <div class="container">
                 <h1>CMLabs👨‍🔧</h1>
-                <h3>Кава ✅ Засоби чищення ✅ Сиропи ✅ Запчастини ✅</h3>
-                <p>⬇️⬇️⬇️</p>
-                <p style="margin:2rem 0;opacity:0.6;">───────────────────────────────────────────────</p>
+                <nav>
+                <h4>Кава ✅ Засоби чищення ✅ Сиропи ✅ Запчастини ✅</h4>
+                </nav>
+                <p style="margin:4rem 0;opacity:0.9;"></p>
                 <h2>Наш асортимент</h2>
                 <div class="gallery">
                     <!-- Папка Кава свіжообсмажена -->
