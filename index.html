@@ -968,28 +968,30 @@ const clearCart = () => {
 };
 
 const orderCart = () => {
-  if (!cart.length) {
-    alert('Кошик порожній');
-    return;
-  }
+  if (!cart.length) return;
 
   let msg = 'Доброго дня! 🛒 Хочу замовити:\n\n';
   cart.forEach(i => msg += `• ${i.name} × ${i.quantity} шт — ₴ ${i.price * i.quantity}\n`);
   msg += `\nЗагальна сума: ₴ ${cart.reduce((a,i)=>a + i.price * i.quantity, 0)}`;
 
   const encoded = encodeURIComponent(msg);
-  const telegramUrl = `https://t.me/CMLabsUA?text=${encoded}`;
 
-  // Спроба відкрити Telegram
-  window.open(telegramUrl, '_blank');
+  // Спочатку Telegram — найстабільніше
+  location.href = `https://t.me/CMLabsUA?text=${encoded}`;
 
-// Спроба 2: якщо не спрацювало — Viber
+  // Якщо користувач не в Telegram — пробуємо Viber
   setTimeout(() => {
-    if (document.hasFocus()) {
-      const viberUrl = `viber://chat?number=%2B380681043408&draft=${encoded}`;
-      window.open(viberUrl, '_blank');
+    if (document.visibilityState === 'visible') {
+      location.href = `viber://chat?number=%2B380681043408&draft=${encoded}`;
     }
   }, 1500);
+
+  // Якщо нічого не спрацювало
+  setTimeout(() => {
+    if (document.visibilityState === 'visible') {
+      alert(`Не вдалося відкрити месенджер автоматично.\n\nСкопіюйте та надішліть вручну:\n\n${msg}`);
+    }
+  }, 3000);
 
   // Якщо не спрацювало (TikTok тощо)
   setTimeout(() => {
