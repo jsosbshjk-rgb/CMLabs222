@@ -50,10 +50,17 @@ body:before {
     background: rgba(0,0,0,0.4); /* легкий фон для кращого вигляду */
     padding: 4px;
 }
-@media (max-width:768px) {
-    .logo { position:fixed; top:0.8rem; left:0.8rem; height:50px; transform:none;
-            opacity:0.95; z-index:999; box-shadow:0 3px 12px rgba(0,0,0,0.6); border-radius:8px; }
-    .logo:not(.scrolled) { top:8vh; left:50%; transform:translateX(-50%); height:14vh; }
+@media (max-width: 768px) {
+  .logo {
+    top: 3rem;                  /* нижче на телефоні */
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100px;
+  }
+
+  .logo.scrolled {
+    top: 1.5rem;                /* при скролі теж нижче */
+  }
 }
 nav {
     background:rgba(0,0,0,0.8); padding:0.9rem 1rem; position:sticky; top:0; z-index:100;
@@ -677,17 +684,18 @@ nav a,
                             <button class="product-btn" onclick="addToCart(this)">Додати в кошик</button>
                         </div>
                     </div>
-                    <!-- Папка Сиропи до кави -->
+                     <!-- Папка Сиропи до кави -->
                     <div class="category-folder" onclick="toggleSubGallery('syrups-folder')">
-                        <img src="https://uploads.onecompiler.io/44as4qwkq/44as44gm7/Emmi-250x250.webp" alt="Сиропи до кави">
+                        <img src="https://uploads.onecompiler.io/44as4qwkq/44as44gm7/%D1%81%D0%B8%D1%80%D0%BE%D0%BF%D0%B8.png" alt="Сиропи до кави">
                         <h3>Сиропи до кави</h3>
                         <p>Класичні та сезонні смаки, 700 мл </p>
                         <p style="font-size:0.95rem;opacity:0.8;">Натисніть, щоб розгорнути</p>
                     </div>
                     <div id="syrups-folder" class="sub-gallery">
                       <div class="product" data-name="Набір сиропів Coffee Set 6шт" data-price="600">
-                            <img src="https://via.placeholder.com/260x200/2c1a0f/FFD700?text=Карамель" alt="Сироп Карамель">
                             <h3>Набір сиропів Coffee Set 6шт по 40 мл</h3>
+                            <img src="https://uploads.onecompiler.io/44as4qwkq/44as44gm7/cofffB5-360x478-removebg-preview.png" alt="Сироп Карамель">
+                            <h3>Набір сиропів Кава-сет 6 шт по 40 мл — це спеціально підібраний дегустаційний комплект міні-сиропів, створений для поціновувачів кавових напоїв та бариста. Підходить для тестування смаків у латте, флет-вайтах, рафах, мокачино, десертах і молочних коктейлях.</h3>
                             <p>Смаки набору: карамель, ваніль, горіх, амаретто, шоколад, кокос.</p>
                             </p>Завдяки компактному формату ви можете спробувати кілька комбінацій та обрати фаворити для щоденного використання.</p>
                             <div class="price">₴ 600</div>
@@ -698,10 +706,10 @@ nav a,
                             </div>
                             <button class="product-btn" onclick="addToCart(this)">Додати в кошик</button>
                         </div>
-                        <div class="product" data-name="Сироп Ваніль (700 мл)" data-price="500">
-                            <img src="https://via.placeholder.com/260x200/2c1a0f/FFD700?text=Ваніль" alt="Сироп Ваніль">
-                            <h3>Сироп Ваніль (700 мл)</h3>
-                            <p>Класичний ванільний смак, преміум-якість</p>
+                        <div class="product" data-name="Сироп Амаретто (700 мл)" data-price="500">
+                            <img src="https://uploads.onecompiler.io/44as4qwkq/44as44gm7/%D0%B0%D0%BC%D0%B0%D1%80%D0%B5%D1%82%D1%82%D0%BE.png" alt="Сироп Амаретто">
+                            <h3>Сироп Амаретто (700 мл)</h3>
+                            <p>Сироп Амаретто це професійний сироп для закладів, з насиченим смаком мигдалю та легкою абрикосовою ноткою, преміум-якість</p>
                             <div class="price">₴ 500</div>
                             <div class="add-to-cart-area">
                                 <button class="quantity-btn" onclick="changeQty(this,-1)">−</button>
@@ -711,9 +719,10 @@ nav a,
                             <button class="product-btn" onclick="addToCart(this)">Додати в кошик</button>
                         </div>
                         <div class="product" data-name="Сироп Карамель (700 мл)" data-price="500">
-                            <img src="https://via.placeholder.com/260x200/2c1a0f/FFD700?text=Карамель" alt="Сироп Карамель">
+                            <img src="https://uploads.onecompiler.io/44as4qwkq/44as44gm7/%D0%BA%D0%B0%D1%80%D0%B0%D0%BC%D0%B5%D0%BB%D1%8C.png" alt="Сироп Карамель">
                             <h3>Сироп Карамель (700 мл)</h3>
                             <p>Насичений карамельний смак</p>
+                            <p>Сироп Карамель — це ароматизований сироп з класичним смаком солодкої карамелі, який підходить для латте, капучино, какао, мілкшейків, морозива, млинців і десертів.</p>
                             <div class="price">₴ 500</div>
                             <div class="add-to-cart-area">
                                 <button class="quantity-btn" onclick="changeQty(this,-1)">−</button>
@@ -722,10 +731,10 @@ nav a,
                             </div>
                             <button class="product-btn" onclick="addToCart(this)">Додати в кошик</button>
                         </div>
-                        <div class="product" data-name="Сироп Горіх (700 мл)" data-price="500">
-                            <img src="https://via.placeholder.com/260x200/2c1a0f/FFD700?text=Горіх" alt="Сироп Горіх">
-                            <h3>Сироп Горіх (700 мл)</h3>
-                            <p>Лісовий горіх, дуже ароматний</p>
+                        <div class="product" data-name="Сироп Мигдаль (700 мл)" data-price="500">
+                            <img src="https://uploads.onecompiler.io/44as4qwkq/44as44gm7/%D0%BC%D0%B8%D0%B3%D0%B4%D0%B0%D0%BB%D1%8C.png" alt="Сироп Мигдаль">
+                            <h3>Сироп Мигдаль (700 мл)</h3>
+                            <p>Сироп Мигдаль — це класичний сироп із виразним горіховим смаком, створений спеціально для кав’ярень, кафе, барів і ресторанів. Він чудово підходить для приготування авторських напоїв, кавових міксів, молочних коктейлів, а також як інгредієнт у випічці та десертах.</p>
                             <div class="price">₴ 500</div>
                             <div class="add-to-cart-area">
                                 <button class="quantity-btn" onclick="changeQty(this,-1)">−</button>
@@ -735,9 +744,10 @@ nav a,
                             <button class="product-btn" onclick="addToCart(this)">Додати в кошик</button>
                         </div>
                         <div class="product" data-name="Сироп Шоколад (700 мл)" data-price="500">
-                            <img src="https://uploads.onecompiler.io/44as4qwkq/44as44gm7/IMG_E3661-removebg-preview.png" alt="Сироп Шоколад">
+                            <img src="https://uploads.onecompiler.io/44as4qwkq/44as44gm7/%D1%88%D0%BE%D0%BA%D0%BE%D0%BB%D0%B0%D0%B4.png" alt="Сироп Шоколад">
                             <h3>Сироп Шоколад (700 мл)</h3>
                             <p>Натуральний шоколадний смак</p>
+                            <p>Сироп Шоколад — це професійний шоколадний сироп із насиченим смаком какао-бобів, створений для використання у кав’ярнях, ресторанах, барист-зонах, десерт-барах і готелях. Підходить для приготування какао, мокачино, латте, молочних коктейлів, мусів, морозива та випічки.</p>
                             <div class="price">₴ 500</div>
                             <div class="add-to-cart-area">
                                 <button class="quantity-btn" onclick="changeQty(this,-1)">−</button>
@@ -746,10 +756,10 @@ nav a,
                             </div>
                             <button class="product-btn" onclick="addToCart(this)">Додати в кошик</button>
                         </div>
-                        <div class="product" data-name="Сироп Амаретто (700 мл)" data-price="500">
-                            <img src="https://via.placeholder.com/260x200/2c1a0f/FFD700?text=Ірландський+крем" alt="Сироп Ірландський крем">
-                            <h3>Сироп Ірландський крем (700 мл)</h3>
-                            <p>Смак Baileys, без алкоголю</p>
+                        <div class="product" data-name="Сироп Ваніль (700 мл)" data-price="500">
+                            <img src="https://uploads.onecompiler.io/44as4qwkq/44as44gm7/%D0%B2%D0%B0%D0%BD%D1%96%D0%BB%D1%8C.png" alt="Сироп Ваніль">
+                            <h3>Сироп Ваніль (700 мл)</h3>
+                            <p>Сироп Ваніль — це ароматизований сироп із насиченим вершково-ванільним смаком, який доповнює каву, чай, молочні коктейлі, фрапе, морозиво, десерти та випічку.</p>
                             <div class="price">₴ 500</div>
                             <div class="add-to-cart-area">
                                 <button class="quantity-btn" onclick="changeQty(this,-1)">−</button>
@@ -759,34 +769,10 @@ nav a,
                             <button class="product-btn" onclick="addToCart(this)">Додати в кошик</button>
                         </div>
                         <div class="product" data-name="Сироп Кокос (700 мл)" data-price="500">
-                            <img src="https://via.placeholder.com/260x200/2c1a0f/FFD700?text=Солона+карамель" alt="Сироп Солона карамель">
-                            <h3>Сироп Солона карамель (700 мл)</h3>
-                            <p>Модний смак солоної карамелі</p>
+                            <img src="https://uploads.onecompiler.io/44as4qwkq/44as44gm7/%D0%BA%D0%BE%D0%BA%D0%BE%D1%81.png" alt="Сироп Кокос">
+                            <h3>Сироп Кокос (700 мл)</h3>
+                            <p>Сироп Кокос — це ароматизований сироп з виразним смаком кокосової м’якоті, який використовується для латте, мілкшейків, коктейлів, десертів, морозива, смузі та випічки. Його тропічний профіль створює відчуття відпустки навіть у буденному напої.</p>
                             <div class="price">₴ 500</div>
-                            <div class="add-to-cart-area">
-                                <button class="quantity-btn" onclick="changeQty(this,-1)">−</button>
-                                <span class="quantity-display">0</span>
-                                <button class="quantity-btn" onclick="changeQty(this,1)">+</button>
-                            </div>
-                            <button class="product-btn" onclick="addToCart(this)">Додати в кошик</button>
-                        </div>
-                        <div class="product" data-name="Сироп Шоколад (700 мл)" data-price="500">
-                            <img src="https://via.placeholder.com/260x200/2c1a0f/FFD700?text=Маракуя" alt="Сироп Маракуя">
-                            <h3>Сироп Маракуя (700 мл)</h3>
-                            <p>Екзотичний тропічний смак</p>
-                            <div class="price">₴ 500</div>
-                            <div class="add-to-cart-area">
-                                <button class="quantity-btn" onclick="changeQty(this,-1)">−</button>
-                                <span class="quantity-display">0</span>
-                                <button class="quantity-btn" onclick="changeQty(this,1)">+</button>
-                            </div>
-                            <button class="product-btn" onclick="addToCart(this)">Додати в кошик</button>
-                        </div>
-                        <div class="product" data-name="Сироп Кленовий (700 мл)" data-price="360">
-                            <img src="https://via.placeholder.com/260x200/2c1a0f/FFD700?text=Кленовий" alt="Сироп Кленовий">
-                            <h3>Сироп Кленовий (700 мл)</h3>
-                            <p>Натуральний кленовий смак</p>
-                            <div class="price">₴ 360</div>
                             <div class="add-to-cart-area">
                                 <button class="quantity-btn" onclick="changeQty(this,-1)">−</button>
                                 <span class="quantity-display">0</span>
@@ -795,6 +781,7 @@ nav a,
                             <button class="product-btn" onclick="addToCart(this)">Додати в кошик</button>
                         </div>
                     </div>
+                    
                     <!-- Запчастини — клікабельна папка -->
 <div class="category-folder product" onclick="toggleSubGallery('parts-folder')" style="cursor:pointer;">
     <img src="https://uploads.onecompiler.io/44as4qwkq/44as44gm7/18211514484958-removebg-preview-Photoroom.png" alt="Запчастини">
