@@ -255,13 +255,13 @@ p, li { font-size:1.05rem; margin:0 auto 1rem; color:#ffd700; max-width:90ch; }
 }
 /* Заголовки (h1, h2, h3) — розкішний шрифт */
 h1, h2, h3 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Manrope', serif;
     font-weight: 700;
 }
 
 /* Звичайний текст і описи товарів */
 p, .product p, .category-folder p {
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Manrope', sans-serif;
     font-weight: 400;
 }
 
@@ -270,7 +270,7 @@ nav a,
 .product-btn,
 #cart-bar,
 #cart-bar button {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Manrope', sans-serif;
     font-weight: 600;
 }
 </style>
@@ -680,7 +680,7 @@ nav a,
         <!-- приклад товару -->
         <img src="https://uploads.onecompiler.io/44as4qwkq/44as44gm7/5974874706_originalne-kiltse-uschilnyuvacha.webp" alt="Насос">
         <h3>Ремкомплект групи заварювання Delonghi</h3>
-        <p>Комплектація L ( ущільнення 3 шт )</p>
+        <p>Комплектація L ( ущільнень 3 шт )</p>
         <div class="price">₴ 350</div>
         <div class="add-to-cart-area">
             <button class="quantity-btn" onclick="changeQty(this,-1)">−</button>
@@ -693,8 +693,68 @@ nav a,
         <!-- приклад товару -->
         <img src="https://uploads.onecompiler.io/44as4qwkq/44as44gm7/6233382921_w400_h400_remkomplekt-l-prokladok.jpg" alt="Насос">
         <h3>Ремкомплект групи заварювання Delonghi</h3>
-        <p>Комплектація XL ( ущільнення 11 шт )</p>
+        <p>Комплектація XL ( ущільнень 11 шт )</p>
         <div class="price">₴ 700</div>
+        <div class="add-to-cart-area">
+            <button class="quantity-btn" onclick="changeQty(this,-1)">−</button>
+            <span class="quantity-display">0</span>
+            <button class="quantity-btn" onclick="changeQty(this,1)">+</button>
+        </div>
+        <button class="product-btn" onclick="addToCart(this)">Додати в кошик</button>
+    </div>
+     <div class="product">
+        <img src="https://uploads.onecompiler.io/44as4qwkq/44as44gm7/%D1%80%D0%B5%D0%BC%20%D1%81%D0%B0%D1%94%D0%BA%D0%BE%20XL.jpg" alt="Насос">
+        <h3>Ремкомплект групи заварювання Philips / Saeco</h3>
+        <p>Комплектація XL ( ущільнень 10 шт )</p>
+        <div class="price">₴ 700</div>
+        <div class="add-to-cart-area">
+            <button class="quantity-btn" onclick="changeQty(this,-1)">−</button>
+            <span class="quantity-display">0</span>
+            <button class="quantity-btn" onclick="changeQty(this,1)">+</button>
+        </div>
+        <button class="product-btn" onclick="addToCart(this)">Додати в кошик</button>
+    </div>
+     <div class="product">
+        <img src="https://uploads.onecompiler.io/44as4qwkq/44as44gm7/%D1%80%D0%B5%D0%BC%20%D1%81%D0%B0%D1%94%D0%BA%D0%BE%20L.jpg" alt="Насос">
+        <h3>Ремкомплект групи заварювання Philips / Saeco</h3>
+        <p>Комплектація L ( ущільнень 4 шт )</p>
+        <div class="price">₴ 350</div>
+        <div class="add-to-cart-area">
+            <button class="quantity-btn" onclick="changeQty(this,-1)">−</button>
+            <span class="quantity-display">0</span>
+            <button class="quantity-btn" onclick="changeQty(this,1)">+</button>
+        </div>
+        <button class="product-btn" onclick="addToCart(this)">Додати в кошик</button>
+    </div>
+    <div class="product">
+        <img src="https://uploads.onecompiler.io/44as4qwkq/44as44gm7/%D1%80%D0%BE%D1%8F%D0%BB.jpg" alt="Насос">
+        <h3>Ремкомплект групи заварювання Saeco / Magic / Royal / Stratos</h3>
+        <p>Комплектація L ( ущільнень 9 шт )</p>
+        <div class="price">₴ 350</div>
+        <div class="add-to-cart-area">
+            <button class="quantity-btn" onclick="changeQty(this,-1)">−</button>
+            <span class="quantity-display">0</span>
+            <button class="quantity-btn" onclick="changeQty(this,1)">+</button>
+        </div>
+        <button class="product-btn" onclick="addToCart(this)">Додати в кошик</button>
+    </div>
+    <div class="product">
+        <img src="https://uploads.onecompiler.io/44as4qwkq/44as44gm7/%D0%B3%D1%96%D0%B2%D0%BE%D0%BD%D0%B0.jpg" alt="Насос">
+        <h3>Ремкомплект групи заварювання Nivona</h3>
+        <p>Комплектація XL ( ущільнень 8 шт )</p>
+        <div class="price">₴ 1000</div>
+        <div class="add-to-cart-area">
+            <button class="quantity-btn" onclick="changeQty(this,-1)">−</button>
+            <span class="quantity-display">0</span>
+            <button class="quantity-btn" onclick="changeQty(this,1)">+</button>
+        </div>
+        <button class="product-btn" onclick="addToCart(this)">Додати в кошик</button>
+    </div>
+    <div class="product">
+        <img src="https://uploads.onecompiler.io/44as4qwkq/44as44gm7/5285529202_w1280_h640_5285529202.jpg" alt="Насос">
+        <h3>Ремкомплект помпи  Ulka EX5, EP5 </h3>
+        <p>Для кавомашин Saeco, Philips, Delonghi</p>
+        <div class="price">₴ 300</div>
         <div class="add-to-cart-area">
             <button class="quantity-btn" onclick="changeQty(this,-1)">−</button>
             <span class="quantity-display">0</span>
@@ -773,7 +833,7 @@ const clearCart = () => {
 const orderCart = () => {
   if (!cart.length) return;
 
-  let msg = 'Доброго дня. Хочу замовити:\n\n';
+  let msg = 'Доброго дня. 🛒🔥 Хочу замовити:\n\n';
   cart.forEach(i => msg += `• ${i.name} × ${i.quantity} шт — ₴ ${i.price * i.quantity}\n`);
   msg += `\nЗагальна сума: ₴ ${cart.reduce((a,i)=>a + i.price * i.quantity, 0)}`;
 
