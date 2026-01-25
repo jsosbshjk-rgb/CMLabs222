@@ -52,7 +52,7 @@ body:before {
 }
 @media (max-width: 768px) {
   .logo {
-    top: 3rem;                  /* нижче на телефоні */
+    top: 19rem;                  /* нижче на телефоні */
     left: 50%;
     transform: translateX(-50%);
     height: 100px;
@@ -297,7 +297,7 @@ nav a,
   position: absolute;
   inset: 0;
   display: flex;
-  animation: slide 50s infinite linear; /* швидше, бо банер менший */
+  animation: slide 60s infinite linear; /* швидше, бо банер менший */
 }
 
 .banner-slider img {
@@ -395,7 +395,7 @@ nav a,
 </div>
   <div class="banner-overlay"></div>
   <div class="banner-text">
-    <h2>Найкращі рішення для твоєї кавомашини</h2>
+    <p>Найкращі рішення для твоєї кавомашини</p>
   </div>
 </div>
     <div id="cart-bar">
@@ -970,7 +970,7 @@ const clearCart = () => {
 const orderCart = () => {
   if (!cart.length) return;
 
-  let msg = 'Доброго дня! 🛒 Хочу замовити:\n\n';
+  let msg = 'Доброго дня! 🛒🔥 Хочу замовити:\n\n';
   cart.forEach(i => msg += `• ${i.name} × ${i.quantity} шт — ₴ ${i.price * i.quantity}\n`);
   msg += `\nЗагальна сума: ₴ ${cart.reduce((a,i)=>a + i.price * i.quantity, 0)}`;
 
