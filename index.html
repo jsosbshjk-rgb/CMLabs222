@@ -940,6 +940,13 @@ const addToCart = (btn) => {
   p.querySelector('.quantity-display').textContent = 0;
   updateCart();
   saveCart();
+
+  // Повідомлення про успіх
+  const toast = document.createElement('div');
+  toast.textContent = '✓ Додано в кошик!';
+  toast.style.cssText = 'position:fixed; bottom:80px; left:50%; transform:translateX(-50%); background:#d4af37; color:#000; padding:12px 24px; border-radius:30px; font-weight:bold; z-index:9999; box-shadow:0 4px 12px rgba(0,0,0,0.4);';
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), 2500);
 };
 
 const updateCart = () => {
@@ -959,25 +966,24 @@ const clearCart = () => {
     saveCart();
   }
 };
+
 const orderCart = () => {
   if (!cart.length) {
     alert('Кошик порожній');
     return;
   }
 
-  let msg = 'Доброго дня! 🛒🔥 Хочу замовити:\n\n';
-  cart.forEach(i => {
-    msg += `• ${i.name} × ${i.quantity} шт — ₴ ${i.price * i.quantity}\n`;
-  });
-  msg += `\nЗагальна сума: ₴ ${cart.reduce((a, i) => a + i.price * i.quantity, 0)}`;
+  let msg = 'Доброго дня! 🛒 Хочу замовити:\n\n';
+  cart.forEach(i => msg += `• ${i.name} × ${i.quantity} шт — ₴ ${i.price * i.quantity}\n`);
+  msg += `\nЗагальна сума: ₴ ${cart.reduce((a,i)=>a + i.price * i.quantity, 0)}`;
 
   const encoded = encodeURIComponent(msg);
   const telegramUrl = `https://t.me/CMLabsUA?text=${encoded}`;
 
-  // Спроба 1: Telegram
+  // Спроба відкрити Telegram
   window.open(telegramUrl, '_blank');
 
-  // Спроба 2: якщо не спрацювало — Viber
+// Спроба 2: якщо не спрацювало — Viber
   setTimeout(() => {
     if (document.hasFocus()) {
       const viberUrl = `viber://chat?number=%2B380681043408&draft=${encoded}`;
@@ -985,12 +991,13 @@ const orderCart = () => {
     }
   }, 1500);
 
-  // Спроба 3: якщо нічого не відкрилось — показуємо повідомлення з готовим текстом
+  // Якщо не спрацювало (TikTok тощо)
   setTimeout(() => {
     if (document.hasFocus()) {
-      alert(`Не вдалося автоматично відкрити месенджер.\n\nСкопіюйте та надішліть це повідомлення:\n\n${msg}`);
+      alert(`TikTok/браузер блокує автоматичний перехід.\n\nСкопіюйте та надішліть це в Telegram @CMLabsUA:\n\n${msg}`);
+      navigator.clipboard.writeText(msg).catch(() => {});
     }
-  }, 3500);
+  }, 1500);
 };
 
 const toggleSubGallery = id => $('#' + id).classList.toggle('active');
@@ -1009,3 +1016,4 @@ if (innerWidth <= 768) {
 addEventListener('load', loadCart);
 </script>
 </body>
+</html>
