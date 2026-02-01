@@ -490,7 +490,6 @@ nav a,
       <li>• кава Imperial свіжообсмажена</li>
       <li>• насадка проливу води</li>
       <li>• автоматичний капучинатор</li>
-      <li>• Delonghi Primadonna S Evo</li>
     </ul>
 
     <h3>Характеристики:</h3>
@@ -540,7 +539,6 @@ nav a,
       <li>• кава Imperial свіжообсмажена</li>
       <li>• насадка проливу води</li>
       <li>• автоматичний капучинатор</li>
-      <li>• Delonghi Cappuccino Smart</li>
     </ul>
 
     <h3>Характеристики:</h3>
@@ -1155,17 +1153,14 @@ const clearCart = () => {
 const orderCart = () => {
   if (!cart.length) return;
 
-let msg = 'Доброго дня! 🛒 Хочу замовити:\n\n';
-  
-  cart.forEach(i => {
-    msg += `• ${i.name} × ${i.quantity} шт — ₴ ${i.price * i.quantity}\n`;
-    if (i.kit && i.kit !== 'Без комплектації') {
-      msg += `  Комплектація: ${i.kit}\n`;
-    }
-    msg += '\n';
-  });
+  let msg = 'Доброго дня! 🛒🔥 Хочу замовити:\n\n';
+  cart.forEach(i => msg += `• ${i.name} × ${i.quantity} шт — ₴ ${i.price * i.quantity}\n`);
+  msg += `\nЗагальна сума: ₴ ${cart.reduce((a,i)=>a + i.price * i.quantity, 0)}`;
 
-  msg += `Загальна сума: ₴ ${cart.reduce((a,i)=>a + i.price * i.quantity, 0)}`;
+  const encoded = encodeURIComponent(msg);
+
+  // Спочатку Telegram — найстабільніше
+  location.href = `https://t.me/CMLabsUA?text=${encoded}`;
 
   // Якщо користувач не в Telegram — пробуємо Viber
   setTimeout(() => {
@@ -1219,3 +1214,4 @@ function changeMainImg(thumb) {
 </script>
 </body>
 </html>
+
