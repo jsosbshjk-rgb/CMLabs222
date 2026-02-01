@@ -465,7 +465,10 @@ nav a,
 
 <div id="coffee-machines-folder" class="sub-gallery">
   <!-- Товар усередині галереї -->
-  <div class="product" data-name="Delonghi Primadonna S Evo" data-price="25000">
+  <div class="product" 
+     data-name="Delonghi Cappuccino Smart" 
+     data-price="18600"
+     data-kit="Комплектація: концентрат від накипу 1 л, таблетки від кавових смол (50 шт), рідина для молочної системи, харчове мастило для бривера, редукційне мастило для трансмісії, кава Imperial свіжообсмажена, насадка проливу води, автоматичний капучинатор, Delonghi Primadonna S Evo">
     <!-- Галерея фото -->
     <div class="product-gallery">
       <img class="main-img" src="https://uploads.onecompiler.io/44as4qwkq/44as44gm7/510.55-960x720-removebg-preview.png" alt="Delonghi Primadonna S Evo">
@@ -490,6 +493,7 @@ nav a,
       <li>• кава Imperial свіжообсмажена</li>
       <li>• насадка проливу води</li>
       <li>• автоматичний капучинатор</li>
+      <li>• Delonghi Primadonna S Evo</li>
     </ul>
 
     <h3>Характеристики:</h3>
@@ -514,7 +518,10 @@ nav a,
     <button class="product-btn" onclick="addToCart(this)">Додати в кошик</button>
   </div>
 
- <div class="product" data-name="Delonghi Cappuccino Smart" data-price="18600">
+ <div class="product" 
+     data-name="Delonghi Cappuccino Smart" 
+     data-price="18600"
+     data-kit="Комплектація: концентрат від накипу 1 л, таблетки від кавових смол (50 шт), рідина для молочної системи, харчове мастило для бривера, редукційне мастило для трансмісії, кава Imperial свіжообсмажена, насадка проливу води, автоматичний капучинатор, Delonghi Cappuccino Smart">
     <!-- Галерея фото -->
     <div class="product-gallery">
       <img class="main-img" src="https://uploads.onecompiler.io/44as4qwkq/44as44gm7/345899706-removebg-preview.png" alt="Delonghi Primadonna S Evo">
@@ -539,6 +546,7 @@ nav a,
       <li>• кава Imperial свіжообсмажена</li>
       <li>• насадка проливу води</li>
       <li>• автоматичний капучинатор</li>
+      <li>• Delonghi Cappuccino Smart</li>
     </ul>
 
     <h3>Характеристики:</h3>
@@ -1116,10 +1124,18 @@ const addToCart = (btn) => {
   const p = btn.closest('.product');
   const qty = +p.querySelector('.quantity-display').textContent || 0;
   if (qty < 1) return;
+
   const name = p.querySelector('h3').textContent.trim();
   const price = +p.querySelector('.price').textContent.replace(/\D/g, '') || 0;
+  const kit = p.getAttribute('data-kit') || 'Без комплектації'; // беремо комплектацію
+
   const ex = cart.find(i => i.name === name);
-  ex ? ex.quantity += qty : cart.push({ name, price, quantity: qty });
+  if (ex) {
+    ex.quantity += qty;
+  } else {
+    cart.push({ name, price, quantity: qty, kit });
+  }
+
   p.querySelector('.quantity-display').textContent = 0;
   updateCart();
   saveCart();
@@ -1151,13 +1167,25 @@ const clearCart = () => {
 };
 
 const orderCart = () => {
-  if (!cart.length) return;
+  if (!cart.length) {
+    alert('Кошик порожній');
+    return;
+  }
 
   let msg = 'Доброго дня! 🛒🔥 Хочу замовити:\n\n';
-  cart.forEach(i => msg += `• ${i.name} × ${i.quantity} шт — ₴ ${i.price * i.quantity}\n`);
-  msg += `\nЗагальна сума: ₴ ${cart.reduce((a,i)=>a + i.price * i.quantity, 0)}`;
+  
+  cart.forEach(i => {
+    msg += `• ${i.name} × ${i.quantity} шт — ₴ ${i.price * i.quantity}\n`;
+    if (i.kit && i.kit !== 'Без комплектації') {
+      msg += `  Комплектація: ${i.kit}\n`;
+    }
+    msg += '\n';
+  });
+
+  msg += `Загальна сума: ₴ ${cart.reduce((a,i)=>a + i.price * i.quantity, 0)}`;
 
   const encoded = encodeURIComponent(msg);
+  const telegramLink = `https://t.me/CMLabsUA?text=${encoded}`;
 
   // Спочатку Telegram — найстабільніше
   location.href = `https://t.me/CMLabsUA?text=${encoded}`;
